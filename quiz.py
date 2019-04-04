@@ -17,20 +17,30 @@ for term in term_dict.keys() :
     print(term + ":" + term_dict[term])
 '''
 
-i = 1
-key_list = list(term_dict.keys())
-random.shuffle(key_list)
-memory = dict()
-for term in key_list :
-    print("### Problem " + str(i).zfill(3) + "#"*167)
+while (True) :
+    i = 1
+    key_list = list(term_dict.keys())
+    random.shuffle(key_list)
+    memory = dict()
     print()
-    print(term_dict[term])
-    print("답을 보려면 아무 키나 누르세요. : ", end="")
-    input()
+    print("퀴즈 풀기 : " + str(len(key_list)) + "문제")
     print()
-    print("답 :", term)
-    print()
-    print("기억 상자에 넣으시겠습니까? (y/n) : ", end="")
-    print("#"*182)
-    print()
-    i = i + 1
+    for term in key_list :
+        print("### Problem " + str(i).zfill(3) + " " + "#"*167)
+        print()
+        print(term_dict[term])
+        print("답을 보려면 아무 키나 누르세요. : ", end="")
+        input()
+        print()
+        print("답 :", term)
+        print()
+        print("저장하고 싶으면 s를 누르세요. : ", end="")
+        if (input() == 's') :
+            memory[term] = term_dict[term]
+        print()
+        print("#"*182)
+        print()
+        i = i + 1
+    term_dict = memory
+    if (len(memory) == 0) :
+        break
